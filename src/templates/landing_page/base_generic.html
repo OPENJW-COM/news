@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Site{% endblock %}</title>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'landing_page:home' %}">Home</a> |
+        <a href="{% url 'landing_page:features' %}">Features</a> |
+        <a href="{% url 'payments:list_plans' %}">Plans</a> |
+        {% if user.is_authenticated %}
+          <a href="{% url 'user_management:profile' %}">Profile</a> |
+          <a href="{% url 'user_management:logout' %}">Logout ({{ user.username }})</a>
+        {% else %}
+          <a href="{% url 'user_management:login' %}">Login</a> |
+          <a href="{% url 'user_management:register' %}">Register</a>
+        {% endif %}
+        {% if user.is_staff %}
+          | <a href="{% url 'admin:index' %}">Admin</a>
+        {% endif %}
+    </nav>
+    <hr>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>

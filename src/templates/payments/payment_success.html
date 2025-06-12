@@ -1,0 +1,7 @@
+{% extends "landing_page/base_generic.html" %}
+{% block title %}Payment Successful{% endblock %}
+{% block content %}
+  <h2>Payment Successful!</h2>
+  <p>Your subscription has been processed (conceptually).</p>
+  <a href="{% url 'user_management:profile' %}">Go to your profile</a>
+{% endblock %}

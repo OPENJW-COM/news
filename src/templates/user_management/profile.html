@@ -1,0 +1,22 @@
+{% extends "landing_page/base_generic.html" %}
+{% block title %}Your Profile{% endblock %}
+{% block content %}
+  <h2>Welcome, {{ user.username }}!</h2>
+  <p>Email: {{ user.email }}</p>
+  <h3>Your Websites:</h3>
+  {% if user_websites %}
+    <ul>
+      {% for website in user_websites %}
+        <li>
+          <a href="{% url 'core_app:view_website' website.id %}">{{ website.name }}</a>
+          (Created: {{ website.created_at|date:"Y-m-d" }})
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>You haven't created any websites yet.</p>
+  {% endif %}
+  <hr>
+  <a href="{% url 'user_management:logout' %}">Logout</a>
+  {# Add links to password change etc. later #}
+{% endblock %}

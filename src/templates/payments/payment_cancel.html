@@ -1,0 +1,7 @@
+{% extends "landing_page/base_generic.html" %}
+{% block title %}Payment Cancelled{% endblock %}
+{% block content %}
+  <h2>Payment Cancelled</h2>
+  <p>Your payment process was cancelled. You can choose a plan again if you wish.</p>
+  <a href="{% url 'payments:list_plans' %}">View Plans</a>
+{% endblock %}

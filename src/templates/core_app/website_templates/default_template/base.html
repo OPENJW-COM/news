@@ -1,0 +1,1 @@
+<html><head><title>{{ website.name }}</title>{% if website.custom_css %}<style>{{ website.custom_css }}</style>{% endif %}</head><body><h1>{{ website.name }}</h1><div id='modules'>{% for module in modules %}{% include module.template_path with content=module.content_data %}{% endfor %}</div></body></html>

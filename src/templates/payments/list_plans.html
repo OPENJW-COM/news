@@ -1,0 +1,23 @@
+{% extends "landing_page/base_generic.html" %}
+{% block title %}Subscription Plans{% endblock %}
+{% block content %}
+  <h2>Choose Your Plan</h2>
+  {% if plans %}
+    <ul>
+      {% for plan in plans %}
+        <li>
+          <h3>{{ plan.name }}</h3>
+          <p>${{ plan.price }}/{{ plan.currency }}</p>
+          <p>{{ plan.description }}</p>
+          Features:
+          <ul>{% for feature in plan.features %}<li>{{ feature }}</li>{% endfor %}</ul>
+          <!-- Conceptual button - would integrate with Stripe.js or redirect -->
+          <a href="{% url 'payments:create_checkout_session' plan.id %}">Choose Plan (Conceptual)</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No subscription plans available at the moment.</p>
+  {% endif %}
+  <!-- Stripe.js would be loaded here using stripe_publishable_key -->
+{% endblock %}
